@@ -1,1 +1,1 @@
-Telrgram bot
+Telegram bot
