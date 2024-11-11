@@ -9,6 +9,10 @@ load_dotenv()
 # Получаем токен из переменной окружения
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 
+# Проверка на наличие токена
+if not TELEGRAM_TOKEN:
+    raise ValueError("Telegram token is not set in the .env file")
+
 # Функция, которая обрабатывает команду /start
 def start(update: Update, context: CallbackContext) -> None:
     update.message.reply_text("Привет! Я ваш Telegram бот. Чем могу помочь?")
@@ -34,7 +38,7 @@ def main() -> None:
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
     # Запускаем бота
-    application.run_polling()
+    application.run_polling(drop_pending_updates=True)
 
 if __name__ == '__main__':
     main()
