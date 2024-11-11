@@ -1,1 +1,13 @@
+# Python
+*.pyc
+__pycache__/
+
+# .env file with sensitive data
 .env
+
+# IDE files (если используете IDE, например, VSCode)
+.vscode/
+.idea/
+
+# Логи
+*.log
